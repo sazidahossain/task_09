@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from .models import Restaurant
-from .forms import RestaurantForm,SignUpForm, SignInForm
+from .forms import RestaurantForm,SignupForm, SigninForm
 from django.contrib.auth import login,authenticate,logout
 
 def signup(request):
-    form = SignUpForm()
+    form = SignupForm()
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
 
@@ -21,9 +21,9 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 def signin(request):
-    form = SignInForm()
+    form = SigninForm()
     if request.method == 'POST':
-        form = SignInForm(request.POST)
+        form = SigninForm(request.POST)
         if form.is_valid():
 
             username = form.cleaned_data['username']
